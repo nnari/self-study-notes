@@ -1,0 +1,3 @@
+[submodule "algorithms-and-data-structures/tirakirja"]
+	path = algorithms-and-data-structures/tirakirja
+	url = https://github.com/pllk/tirakirja.git
