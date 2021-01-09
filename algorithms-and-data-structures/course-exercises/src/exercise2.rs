@@ -1,19 +1,34 @@
-//Worst implementation of prime calc I've seen
-pub fn primesToN(n: i32) -> i32 {
-    let mut count = 0;
-    for i in 2..n+1 {
-        let mut prime = true;
-        for j in 2..i-1 {
-            if i%j == 0 {
-                prime = false;
-                break;
-            }
+pub fn primesToN(mut n: i32) -> i32 {
+    let mut primes = vec![];
+    for i in 2..=n {
+        primes.push(i);
+    }
+    for i in 0..primes.len() {
+        let cur = primes[i];
+        if cur != 0 {
+            sieve(&mut primes, cur);
         }
-        if prime {
+    }
+
+    //count primality
+    let mut count = 0;
+    for i in 0..primes.len() {
+        if primes[i] != 0 {
             count = count + 1;
         }
     }
     count
+}
+
+fn sieve(primes: &mut Vec<i32>, factor: i32) {
+    for i in 0..primes.len() {
+        let value = primes[i];
+        if value != 0 && value != factor {
+            if value % factor == 0 {
+                primes[i] = 0;
+            }
+        }
+    }
 }
 
 #[cfg(test)]
@@ -38,8 +53,8 @@ mod tests {
     }
     #[test]
     fn answer3() {
-        let n = 100000;
-        assert_eq!(primesToN(n), 125);
+        let n = 10000;
+        assert_eq!(primesToN(n), 9592);
     }
 
     #[bench]

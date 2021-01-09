@@ -1,9 +1,7 @@
 #![feature(test)]
-extern crate time;
-use time::PreciseTime;
 mod exercise1;
+mod exercise2;
 
 fn main() {
-    let n = 100;
-    exercise1::primesToN(n);
+    println!("count: {}", exercise2::primesToN(1000));
 }

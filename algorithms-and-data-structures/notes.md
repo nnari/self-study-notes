@@ -248,7 +248,7 @@ let n = '01001' //input
 for (let i = 0; i < n.length; i++) {
     for (let j = i + 1; j < n.length; j++) {
           iters++
-          if (n.charAt(i) === '0' && n.charAt(j) === '1') {
+          if (n[i] === '0' && n[j] === '1') {
             counter++
         }
     }
@@ -262,7 +262,7 @@ let n = '01001' //input
 let counter = 0
 let zeros = 0
 for (let i = 0; i < n.length; i++) {
-    if(n.charAt(i) === '0')
+    if(n[i] === '0')
         zeros++
     else
         counter += zeros
