@@ -3,10 +3,11 @@ Author: Tatu Pesonen
 Created on: 09.01.2021  
 Last updated on: 09.01.2021  
 - [Table of Contents](#table-of-contents)
+- [Links](#links)
   - [Links to course material](#links-to-course-material)
+  - [Links to my own material I watched](#links-to-my-own-material-i-watched)
 - [Book](#book)
   - [Introduction](#introduction)
-  - [Big O Notation](#big-o-notation)
   - [Time complexity](#time-complexity)
     - [Example usage of calculating functions efficiency](#example-usage-of-calculating-functions-efficiency)
   - [Equations to calculate time complexity](#equations-to-calculate-time-complexity)
@@ -20,9 +21,18 @@ Last updated on: 09.01.2021
     - [Some other time complexities](#some-other-time-complexities)
   - [Estimating efficiency](#estimating-efficiency)
   - [Implementing a $O(n^2)$ algorithm versus $O(n)$](#implementing-a-on2-algorithm-versus-on)
+    - [Solving the CS Dojo array 2d sum challenge and analyzing the algorithm](#solving-the-cs-dojo-array-2d-sum-challenge-and-analyzing-the-algorithm)
+    - [Solving my friend's math problem](#solving-my-friends-math-problem)
+  - [Big O Notation](#big-o-notation)
 
+# Links
 ## Links to course material
 [Tietorakenteet ja algoritmit syksy 2020](https://tira.mooc.fi/syksy-2020/pages/materiaali.html)
+
+## Links to my own material I watched
+[CS Dojo](https://www.youtube.com/watch?v=D6xkbGLQesk)
+[Some StackOverFlow post](https://cs.stackexchange.com/questions/74936/understanding-constants-in-big-o-notation)  
+^ (pretty confusing if you ask me, still)
 
 # Book
 
@@ -39,17 +49,12 @@ List of programming constructs that the quote refers to:
 * Functions (called procedures for functions with no return type)
     * Recursion, but this is a part of functions
 
-## Big O Notation
-The $O(n)$ is simplified analysis of an algorithm's efficiency.
-1. Complexity in terms of input size, $n$
-2. Machine-independent
-3. Basic computer steps
-4. Time & space
-
 [Source](https://www.youtube.com/watch?v=__vX2sjlpXU)
 
 ## Time complexity
-
+Time complexity can tell us how as certain algorithm's runtime increases as the input size grows.  
+Below is an image of a function of $O(n)$ (so linear time!)  
+![](imgs/lineartime.png)
 ### Example usage of calculating functions efficiency
 
 ```
@@ -66,6 +71,13 @@ According to the book, this kind of algorithm analysis is more precise than we n
 You may occasionally need more accurate analysis methods, though.
 
 ## Equations to calculate time complexity
+Example from CS Dojo  
+![](imgs/csdojo-calculating-time-complexity.png)  
+Fastest growing term is $n*c_5$
+Removing the coefficient, $n$
+$$
+T_2 = O(1)+n*O(1)+O(1) \\ T_2 = c_4+ n*c_5 \\ T_2 = O(n)
+$$
 
 **Single commands**  
 If the code doesn't have loops but only commands, time complexity is O(1).  
@@ -296,3 +308,21 @@ Comparison between the functions in JavaScript repl.it.
 
 Ran it on my own computer with input size of 10^5  
 ![](imgs/o(n)vso(n^2)withInputSize10^5.png)
+
+### Solving the CS Dojo array 2d sum challenge and analyzing the algorithm
+
+### Solving my friend's math problem
+```js
+let arr = 
+function iterativeMergeSort(arr) {
+
+}
+```
+
+## Big O Notation
+The $O(n)$ is simplified analysis of an algorithm's efficiency.
+1. Complexity in terms of input size, $n$
+2. Machine-independent
+3. Basic computer steps
+4. Time & space
+
