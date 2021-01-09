@@ -3,9 +3,11 @@ const {
     performance
 } = require('perf_hooks');
 
-let n = "";
-for (let i = 0; i < 10000; i++) {
-    n += Math.floor((Math.random() * 2)).toString();
+const n = 100000;
+
+let characters = "";
+for (let i = 0; i < n; i++) {
+    characters += Math.floor((Math.random() * 2)).toString();
 }
 
 function Onsquared2(n) {
@@ -33,11 +35,11 @@ function Oofn(n) {
 }
 
 var t0 = performance.now()
-Oofn(n);
+Oofn(characters);
 var t1 = performance.now()
 console.log("Call to O(n) algorithm took " + (t1 - t0) + " milliseconds.")
 
 var t2 = performance.now()
-Onsquared2(n);
+Onsquared2(characters);
 var t3 = performance.now()
 console.log("Call to O(n^2) took " + (t3 - t2) + " milliseconds.")

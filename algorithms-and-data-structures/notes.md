@@ -293,3 +293,6 @@ zeros = 3
 Comparison between the functions in JavaScript repl.it.  
 [Source Code](experiments/BigO.js)  
 ![](imgs/o(n)vso(n^2).png)
+
+Ran it on my own computer with input size of 10^5  
+![](imgs/o(n)vso(n^2)withInputSize10^5.png)
