@@ -214,9 +214,9 @@ Estimating the efficiency of an algorithm gives us as an estimate on how *good* 
 | Size of input n | Needed time complexity |
 |----------------:|-----------------------:|
 |              10 |                  O(n!) |
-|              20 |                  O(2n) |
-|             500 |                  O(n3) |
-|            5000 |                  O(n2) |
+|              20 |                  O(2^n) |
+|             500 |                  O(n^3) |
+|            5000 |                  O(n^2) |
 |            10^6 |     O(n) or O(n log n) |
 |             big |       O(1) or O(log n) |
 
