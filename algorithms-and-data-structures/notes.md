@@ -290,3 +290,6 @@ zeros = 3
 01001  
     ^  
 ```
+Comparison between the functions in JavaScript repl.it.  
+[Source Code](experiments/BigO.js)  
+![](imgs/o(n)vso(n^2).png)
