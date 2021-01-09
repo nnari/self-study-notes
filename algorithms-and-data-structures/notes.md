@@ -1,11 +1,14 @@
 # Table of Contents
+Author: Tatu Pesonen  
+Created on: 09.01.2021  
+Last updated on: 09.01.2021  
 - [Table of Contents](#table-of-contents)
   - [Links to course material](#links-to-course-material)
 - [Book](#book)
   - [Introduction](#introduction)
+  - [Big O Notation](#big-o-notation)
   - [Time complexity](#time-complexity)
     - [Example usage of calculating functions efficiency](#example-usage-of-calculating-functions-efficiency)
-    - [Some information](#some-information)
   - [Equations to calculate time complexity](#equations-to-calculate-time-complexity)
     - [Time complexity for algorithms with loops is $O(n^k)$](#time-complexity-for-algorithms-with-loops-is-onk)
   - [Common time complexities](#common-time-complexities)
@@ -15,6 +18,8 @@
     - [Sorting](#sorting)
     - [Quadratic](#quadratic)
     - [Some other time complexities](#some-other-time-complexities)
+  - [Estimating efficiency](#estimating-efficiency)
+  - [Implementing a $O(n^2)$ algorithm versus $O(n)$](#implementing-a-on2-algorithm-versus-on)
 
 ## Links to course material
 [Tietorakenteet ja algoritmit syksy 2020](https://tira.mooc.fi/syksy-2020/pages/materiaali.html)
@@ -34,6 +39,15 @@ List of programming constructs that the quote refers to:
 * Functions (called procedures for functions with no return type)
     * Recursion, but this is a part of functions
 
+## Big O Notation
+The $O(n)$ is simplified analysis of an algorithm's efficiency.
+1. Complexity in terms of input size, $n$
+2. Machine-independent
+3. Basic computer steps
+4. Time & space
+
+[Source](https://www.youtube.com/watch?v=__vX2sjlpXU)
+
 ## Time complexity
 
 ### Example usage of calculating functions efficiency
@@ -50,11 +64,6 @@ Worst case: 3n + 1
 
 According to the book, this kind of algorithm analysis is more precise than we need here.  
 You may occasionally need more accurate analysis methods, though.
-
-### Some information
-n = input size, for example length of an array. (in Big O notation)  
- 
-**O(n) = All functions that don't conditionally branch and don't contain loops are atleast O(n).**
 
 ## Equations to calculate time complexity
 
@@ -198,3 +207,86 @@ To calculate the time complexity of quadratic & cubic algorithms you can use [$O
 
 ### Some other time complexities
 ![](imgs/rest-of-the-complexities.png)
+
+## Estimating efficiency
+Estimating the efficiency of an algorithm gives us as an estimate on how *good* an algorithm is, so how big of an input we can have and still process it efficiently.
+
+| Size of input n | Needed time complexity |
+|----------------:|-----------------------:|
+|              10 |                  O(n!) |
+|              20 |                  O(2n) |
+|             500 |                  O(n3) |
+|            5000 |                  O(n2) |
+|            10^6 |     O(n) or O(n log n) |
+|             big |       O(1) or O(log n) |
+
+Big O notation is an estimate, it is a concise "rating" you can give to an algorithm that tells you how big of an input ($n$) you should/can use for it.
+
+>"Yksi kiinnostava näkökulma algoritmin tehokkuuteen on, miten suuren
+syötteen algoritmi voi käsitellä nopeasti (noin sekunnissa)."
+
+>"A good implementation of an algorithm can be tens of times faster than a bad implementation."
+
+## Implementing a $O(n^2)$ algorithm versus $O(n)$
+First, the naive $O(n^2)$ implementation in JavaScript.
+```js
+let counter = 0
+let iters = 0
+let n = '01001' //input
+for (let i = 0; i < n.length; i++) {
+    for (let j = i + 1; j < n.length; j++) {
+          iters++
+          if (n.charAt(i) === '0' && n.charAt(j) === '1') {
+            counter++
+        }
+    }
+}
+console.log(counter, iters) //Counter is 4, took 10 iterations to complete
+```
+
+Then, let's compare it to the $O(n)$ algorithm.
+```js
+let n = '01001' //input
+let counter = 0
+let zeros = 0
+for (let i = 0; i < n.length; i++) {
+    if(n.charAt(i) === '0')
+        zeros++
+    else
+        counter += zeros
+}
+console.log(counter)
+```
+
+Example of how execution looks on $O(n)$ algorithm.
+```python
+i = 0  
+counter = 0  
+zeros = 1 
+01001  
+^
+------
+i = 1  
+counter = 1  
+zeros = 1  
+01001  
+ ^  
+------
+i = 2  
+counter = 1  
+zeros = 2  
+01001  
+  ^  
+------
+i = 3  
+counter = 1  
+zeros = 3  
+01001  
+   ^  
+------
+i = 4  
+counter = 4  
+zeros = 3  
+01001  
+    ^  
+```
